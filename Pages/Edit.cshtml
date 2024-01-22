@@ -1,0 +1,47 @@
+﻿@page
+@model Firebase.EditModel
+@{
+    ViewData["Title"] = "Edit Shoe";
+}
+
+<h2>Edit Shoe</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group mb-2">
+                <label asp-for="Shoe.Name" class="control-label"></label>
+                <input value="@Model.OldShoe.Name" asp-for="Shoe.Name" class="form-control" />
+                <span asp-validation-for="Shoe.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Shoe.Brand" class="control-label"></label>
+                <input value="@Model.OldShoe.Brand" asp-for="Shoe.Brand" class="form-control" />
+                <span asp-validation-for="Shoe.Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Shoe.Price" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">£</span>
+                    </div>
+                    <input value="@Model.OldShoe.Price" asp-for="Shoe.Price" class="form-control" />
+                </div>
+                <span asp-validation-for="Shoe.Price" class="text-danger"></span>
+            </div>
+            <video width="width_value" height="height_value" controls>
+                <source src="@Model.OldShoe.VideoUri" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="form-group mb-2">
+                <label asp-for="@Model.Shoe.Video" class="control-label"></label>
+                <input type="file" asp-for="@Model.Shoe.Video" accept="video/mp4" />
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+   
+</div>

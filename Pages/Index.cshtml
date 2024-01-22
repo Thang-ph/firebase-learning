@@ -1,0 +1,68 @@
+﻿@page
+@model Firebase.IndexModel
+@{
+    ViewData["Title"] = "Shoes";
+}
+
+<h2>Shoes</h2>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<table class="table shoe-table">
+    <thead>
+        <tr>
+            <th>
+                <label>Id</label>
+            </th>
+            <th>
+                <label>Name</label>
+            </th>
+            <th>
+                <label>Brand</label>
+            </th>
+            <th>
+                <label>Price</label>
+            </th>
+            <th>
+                <label>Image</label>
+            </th>
+            <th>
+                <label>Action</label>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shoe in Model.Shoes)
+        {
+            <tr>
+                <td>
+                    <label>@shoe.Id</label>
+                </td>
+                <td>
+                    <label>@shoe.Name</label>
+                </td>
+                <td>
+                    <label>@shoe.Brand</label>
+                </td>
+                <td>
+                    <label>@shoe.Price</label>
+                </td>
+               
+                <td>
+                    <video width="width_value" height="height_value" controls>
+                        <source src="@shoe.VideoUri" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@shoe.Id" >Edit</a>
+                    <a asp-page="Delete" asp-route-id="@shoe.Id">Delete</a>
+
+                    
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
